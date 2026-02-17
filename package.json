@@ -1,0 +1,36 @@
+{
+  "name": "linsyslab",
+  "friendlyName": "LinSysLab",
+  "version": "0.0.1",
+  "description": "LinSysLab package",
+  "dependencies": {
+    "datagrok-api": "^1.26.0",
+    "cash-dom": "^8.1.5",
+    "dayjs": "^1.11.13",
+    "@datagrok-libraries/utils": "latest"
+  },
+  "devDependencies": {
+    "datagrok-tools": "^5.1.5",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "ts-loader": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "debug-linsyslab": "webpack && grok publish",
+    "release-linsyslab": "webpack && grok publish --release",
+    "build-linsyslab": "webpack",
+    "build": "grok api && grok check --soft && webpack",
+    "test": "grok test",
+    "debug-linsyslab-dev": "webpack && grok publish dev",
+    "release-linsyslab-dev": "webpack && grok publish dev --release",
+    "debug-linsyslab-local": "webpack && grok publish local",
+    "release-linsyslab-local": "webpack && grok publish local --release"
+  },
+  "canEdit": [
+    "Developers"
+  ],
+  "canView": [
+    "All users"
+  ]
+}
