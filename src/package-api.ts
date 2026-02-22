@@ -11,4 +11,11 @@ export namespace funcs {
   export async function info(): Promise<void> {
     return await grok.functions.call('LinSysLab:Info', {});
   }
+
+  /**
+  Analyze a sparse matrix in COO triplet form
+  */
+  export async function analyzeCOO(Adf: DG.DataFrame , Ai: DG.Column , Aj: DG.Column , Av: DG.Column ): Promise<DG.DataFrame> {
+    return await grok.functions.call('LinSysLab:AnalyzeCOO', { Adf, Ai, Aj, Av });
+  }
 }
