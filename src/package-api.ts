@@ -18,4 +18,18 @@ export namespace funcs {
   export async function analyzeCOO(Adf: DG.DataFrame , Ai: DG.Column , Aj: DG.Column , Av: DG.Column ): Promise<DG.DataFrame> {
     return await grok.functions.call('LinSysLab:AnalyzeCOO', { Adf, Ai, Aj, Av });
   }
+
+  /**
+  Per-row statistics for a sparse matrix in COO triplet form
+  */
+  export async function rowStatsCOO(Adf: DG.DataFrame , Ai: DG.Column , Aj: DG.Column , Av: DG.Column ): Promise<DG.DataFrame> {
+    return await grok.functions.call('LinSysLab:RowStatsCOO', { Adf, Ai, Aj, Av });
+  }
+
+  /**
+  Compute y = A*x where A is in COO form
+  */
+  export async function spmvCOO(Adf: DG.DataFrame , Ai: DG.Column , Aj: DG.Column , Av: DG.Column , xdf: DG.DataFrame , x: DG.Column ): Promise<DG.DataFrame> {
+    return await grok.functions.call('LinSysLab:SpmvCOO', { Adf, Ai, Aj, Av, xdf, x });
+  }
 }

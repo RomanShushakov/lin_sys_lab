@@ -43,3 +43,23 @@ export function cooToCsr(coo: CooMatrix): CsrMatrix {
 
   return { nRows, nCols, rowPtr, colIdx, val };
 }
+
+// y = A * x, CSR format
+export function csrMatVec(A: CsrMatrix, x: Float64Array, y?: Float64Array): Float64Array {
+  const { nRows, rowPtr, colIdx, val } = A;
+  if (x.length !== A.nCols) {
+    throw new Error(`csrMatVec: x length ${x.length} != nCols ${A.nCols}`);
+  }
+
+  const out = y ?? new Float64Array(nRows);
+
+  for (let i = 0; i < nRows; i++) {
+    let s = 0;
+    for (let k = rowPtr[i]; k < rowPtr[i + 1]; k++) {
+      s += val[k] * x[colIdx[k]];
+    }
+    out[i] = s;
+  }
+
+  return out;
+}
